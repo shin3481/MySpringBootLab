@@ -86,5 +86,13 @@ public class BookDTO {
                 book.getPublishDate()
             );
         }
+//        public BookResponse(Book book) {  // 👈 추가
+//            this.id = book.getId();
+//            this.title = book.getTitle();
+//            this.author = book.getAuthor();
+//            this.isbn = book.getIsbn();
+//            this.price = book.getPrice();
+//            this.publishDate = book.getPublishDate();
+//        }
     }
 }
