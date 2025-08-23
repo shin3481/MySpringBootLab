@@ -20,71 +20,58 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
-    
+
+    // 도서 등록
+    @PostMapping
+    public ResponseEntity<BookDTO.BookResponse> createBook(@Valid @RequestBody BookDTO.BookCreateRequest request) {
+        return ResponseEntity.ok(bookService.createBook(request));
+    }
+
     // 모든 도서 조회
     @GetMapping
     public ResponseEntity<List<BookDTO.BookResponse>> getAllBooks() {
+
         return ResponseEntity.ok(bookService.getAllBooks());
     }
     
     // ID로 도서 조회
     @GetMapping("/{id}")
     public ResponseEntity<BookDTO.BookResponse> getBookById(@PathVariable Long id) {
-        Optional<Book> optionalBook = bookRepository.findById(id);
-        //map(Function) T -> R
-        return optionalBook.map(book -> ResponseEntity.ok(book))
-                //.map(ResponseEntity::ok)
-                //.orElse(ResponseEntity.notFound().build()); //Body가 없고, 404 status code만 반환됨
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+        BookDTO.BookResponse bookById = bookService.getBookById(id);
+        return ResponseEntity.ok(bookById);
+
     }
     
     // ISBN으로 도서 조회
     @GetMapping("/isbn/{isbn}")
-    public Book getBookByIsbn(@PathVariable String isbn) {
-        return bookRepository.findByIsbn(isbn)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+    public ResponseEntity<BookDTO.BookResponse> getBookByIsbn(@PathVariable String isbn) {
+        BookDTO.BookResponse bookByIsbn = bookService.getBookByIsbn(isbn);
+        return ResponseEntity.ok(bookByIsbn);
     }
     
     // 저자명으로 도서 조회
     @GetMapping("/author/{author}")
-    public List<Book> getBooksByAuthor(@PathVariable String author) {
-
-        return bookRepository.findByAuthorContainingIgnoreCase(author);
+    public ResponseEntity<List<BookDTO.BookResponse>> getBooksByAuthor(@PathVariable String author) {
+        List<BookDTO.BookResponse> booksByAuthor = bookService.getBooksByAuthor(author);
+        return ResponseEntity.ok(booksByAuthor);
     }
-    // 제목으로 도서 조회
+    //제목으로 도서조회
     @GetMapping("/title/{title}")
-    public List<Book> getBooksByTitle(@PathVariable String title) {
+    public ResponseEntity<List<BookDTO.BookResponse>> getBooksByTitle(String title){
+        List<BookDTO.BookResponse> booksByTitle = bookService.getBooksByTitle(title);
+        return ResponseEntity.ok(booksByTitle);
+    }
 
-        return bookRepository.findByAuthorContainingIgnoreCase(author);
-    }
-    
-    // 도서 등록
-    @PostMapping
-    public ResponseEntity<BookDTO.BookResponse> createBook(@Valid @RequestBody BookDTO.BookCreateRequest request) {
-        Book savedBook = bookService
-        return new ResponseEntity<>(savedBook, HttpStatus.CREATED); //CREATED 201
-    }
-    
     // 도서 정보 수정
     @PatchMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetail) {
-        Book existBook = bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
-        //가격만 변경
-        existBook.setPrice(bookDetail.getPrice());
-
-        Book updatedBook = bookRepository.save(existBook);
-        return ResponseEntity.ok(updatedBook);
+    public ResponseEntity<BookDTO.BookResponse> updateBook(@PathVariable Long id, @Valid @RequestBody BookDTO.BookUpdateRequest request) {
+        return ResponseEntity.ok(bookService.updateBook(id,request));
     }
     
     // 도서 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        //매칭돠는 Book 이 없으면
-        if (!bookRepository.existsById(id)) {
-            return ResponseEntity.notFound().build(); //body는 없고, 404 status code만 반환
-        }
-        bookRepository.deleteById(id);
-        return ResponseEntity.noContent().build(); ////body는 없고, 204 status code만 반환
+        bookService.deleteBook(id);
+        return ResponseEntity.noContent().build();
     }
 }
