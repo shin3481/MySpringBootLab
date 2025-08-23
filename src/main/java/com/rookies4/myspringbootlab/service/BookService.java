@@ -32,13 +32,11 @@ public class BookService {
         return BookDTO.BookResponse.from(savedBook);
     }
     //목록조회
-    public ResponseEntity<List<BookDTO.BookResponse>> getAllBooks(){
-        return ResponseEntity.ok(
-                bookRepository.findAll()
+    public List<BookDTO.BookResponse> getAllBooks(){
+        return bookRepository.findAll()
                         .stream()
                         .map(BookDTO.BookResponse::from)
-                        .toList()
-        );
+                        .toList();
 
     }
     //Id로 Book 조회하기
