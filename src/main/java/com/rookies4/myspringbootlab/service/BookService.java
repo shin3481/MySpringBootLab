@@ -51,18 +51,16 @@ public class BookService {
         return BookDTO.BookResponse.from(bookEntity);
     }
     //Author로 Book 조회하기
-    public ResponseEntity<List<BookDTO.BookResponse>> getBooksByAuthor(String author){
-        return ResponseEntity.ok(
-                bookRepository.findByAuthor(author)
+    public List<BookDTO.BookResponse> getBooksByAuthor(String author){
+        return bookRepository.findByAuthor(author)
                         .stream()
                         .map(BookDTO.BookResponse::from)
-                        .toList()
-        );
+                        .toList();
 
     }
     //Book 수정
     @Transactional
-    public  BookDTO.BookResponse updateBook(Long id, BookDTO.BookCreateRequest request){
+    public  BookDTO.BookResponse updateBook(Long id, BookDTO.BookUpdateRequest request){
         Book existbook = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
 

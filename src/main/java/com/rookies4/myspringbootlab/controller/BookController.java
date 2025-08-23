@@ -52,7 +52,7 @@ public class BookController {
     // 저자명으로 도서 조회
     @GetMapping("/author/{author}")
     public ResponseEntity<List<BookDTO.BookResponse>> getBooksByAuthor(@PathVariable String author) {
-        ResponseEntity<List<BookDTO.BookResponse>> booksByAuthor = bookService.getBooksByAuthor(author);
+        List<BookDTO.BookResponse> booksByAuthor = bookService.getBooksByAuthor(author);
         return ResponseEntity.ok(booksByAuthor);
     }
 
