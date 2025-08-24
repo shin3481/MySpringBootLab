@@ -50,12 +50,20 @@ public class BookService {
                 .orElseThrow(() -> new BusinessException("Book not found with ISBN: " + isbn, HttpStatus.NOT_FOUND));
         return BookDTO.BookResponse.from(bookEntity);
     }
-    //Author로 Book 조회하기
-    public List<BookDTO.BookResponse> getBooksByAuthor(String author){
-        return bookRepository.findByAuthor(author)
+    //Title로 Book 조회하기
+    public List<BookDTO.BookResponse> getBooksByTitle(String title){
+        return bookRepository.findByTitleContainingIgnoreCase(title)
                         .stream()
                         .map(BookDTO.BookResponse::from)
                         .toList();
+
+    }
+    //Author로 Book 조회하기
+    public List<BookDTO.BookResponse> getBooksByAuthor(String author){
+        return bookRepository.findByAuthorContainingIgnoreCase(author)
+                .stream()
+                .map(BookDTO.BookResponse::from)
+                .toList();
 
     }
     //Book 수정

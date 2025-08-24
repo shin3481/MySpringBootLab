@@ -55,7 +55,12 @@ public class BookController {
         List<BookDTO.BookResponse> booksByAuthor = bookService.getBooksByAuthor(author);
         return ResponseEntity.ok(booksByAuthor);
     }
-
+    // 제목으로 도서 조회
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<BookDTO.BookResponse>> getBooksByTitle(@PathVariable String title) {
+        List<BookDTO.BookResponse> booksByAuthor = bookService.getBooksByTitle(title);
+        return ResponseEntity.ok(booksByAuthor);
+    }
     // 도서 정보 수정
     @PatchMapping("/{id}")
     public ResponseEntity<BookDTO.BookResponse> updateBook(@PathVariable Long id, @Valid @RequestBody BookDTO.BookUpdateRequest request) {
