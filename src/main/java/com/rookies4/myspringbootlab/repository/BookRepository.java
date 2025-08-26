@@ -20,5 +20,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByIdWithBookDetail(@Param("id") Long id);
     @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.isbn =: isbn")
     Optional<Book> findByIsbnWithBookDetail(String isbn);
+    //Isbn의 중복체크를 위한 메서드
     boolean existsByIsbn(String isbn);
 }

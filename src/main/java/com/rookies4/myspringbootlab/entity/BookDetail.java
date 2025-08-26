@@ -33,6 +33,7 @@ public class BookDetail {
     @Column(nullable = false)
     private String edition;
 
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id",unique = true)
     private Book book;
