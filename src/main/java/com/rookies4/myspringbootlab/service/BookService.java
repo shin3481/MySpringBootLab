@@ -26,7 +26,7 @@ public class BookService {
     public BookDTO.Response createBook(BookDTO.Request request){
         //Isbn이 중복되면 BusinessException 발생 시키고 종료
         if(bookRepository.existsByIsbn(request.getIsbn())){
-            throw new BusinessException("Book with this Isbn already Exist"+ request.getIsbn(),HttpStatus.CONFLICT);
+            throw new BusinessException(ErrorCode.ISBN_DUPLICATE,request.getIsbn());
         }
         // DTO -> Entity 변환
         Book book = Book.builder()
@@ -69,7 +69,7 @@ public class BookService {
     //Isbn로 Book 조회하기
     public BookDTO.Response getBookByIsbn(String isbn){
         Book bookEntity = bookRepository.findByIsbn(isbn)
-                .orElseThrow(() -> new BusinessException("Book not found with ISBN: " + isbn, HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Isbn",isbn));
         return BookDTO.Response.fromEntity(bookEntity);
     }
     //Author로 Book 조회하기
@@ -91,7 +91,7 @@ public class BookService {
     @Transactional
     public  BookDTO.Response updateBook(Long id, BookDTO.Request request){
         Book existbook = bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
         // 업데이트할 필드들 반영
         existbook.setTitle(request.getTitle());
@@ -107,7 +107,7 @@ public class BookService {
     @Transactional
     public BookDTO.Response patchBook(Long id, BookDTO.PatchRequest request) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
         // ISBN 중복 체크
         if (request.getIsbn() != null && !book.getIsbn().equals(request.getIsbn()) &&
@@ -143,7 +143,7 @@ public class BookService {
     @Transactional
     public BookDTO.Response patchBookDetail(Long id, BookDTO.BookDetailPatchRequest request) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
         BookDetail bookDetail = book.getBookDetail();
         if (bookDetail == null) {
@@ -186,6 +186,6 @@ public class BookService {
     //내부 Helper Method
     private Book getBookExist(Long id){
         return bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
     }
 }
