@@ -18,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://127.0.0.1:5500") // 허용할 프론트엔드 주소
 public class BookController {
     private final BookService bookService;
 
