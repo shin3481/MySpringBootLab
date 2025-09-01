@@ -10,25 +10,14 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // BusinessException 처리
+    // 기존에 RESOURCE_NOT_FOUND 처리 등이 있다면 그대로 두고 추가
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<Map<String, Object>> handleBusinessException(BusinessException ex) {
-        Map<String, Object> errorResponse = new HashMap<>();
-        errorResponse.put("statusCode", ex.getHttpStatus().value());
-        errorResponse.put("message", ex.getMessage());   // ISBN 중복 같은 메시지
-        return ResponseEntity
-                .status(ex.getHttpStatus())
-                .body(errorResponse);
+        Map<String, Object> body = new HashMap<>();
+        body.put("message", ex.getErrorCode().getMessage());
+        body.put("details", ex.getDetails()); // 필요시 추가
+        return new ResponseEntity<>(body, ex.getErrorCode().getStatus());
     }
 
-    // 그 외 예외 처리 (안정성용)
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
-        Map<String, Object> errorResponse = new HashMap<>();
-        errorResponse.put("statusCode", 500);
-        errorResponse.put("message", ex.getMessage() != null ? ex.getMessage() : "Internal Server Error");
-        return ResponseEntity
-                .status(500)
-                .body(errorResponse);
-    }
+    // 다른 예외 처리도 여기에 추가 가능
 }

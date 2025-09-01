@@ -93,6 +93,11 @@ public class BookService {
         Book existbook = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
+        // ISBN 중복 체크
+        if (request.getIsbn() != null && !existbook.getIsbn().equals(request.getIsbn()) &&
+                bookRepository.existsByIsbn(request.getIsbn())) {
+            throw new BusinessException(ErrorCode.ISBN_DUPLICATE, request.getIsbn());
+        }
         // 업데이트할 필드들 반영
         existbook.setTitle(request.getTitle());
         existbook.setAuthor(request.getAuthor());
@@ -106,34 +111,34 @@ public class BookService {
     // -----
     @Transactional
     public BookDTO.Response patchBook(Long id, BookDTO.PatchRequest request) {
-        Book book = bookRepository.findById(id)
+        Book existbook = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
         // ISBN 중복 체크
-        if (request.getIsbn() != null && !book.getIsbn().equals(request.getIsbn()) &&
+        if (request.getIsbn() != null && !existbook.getIsbn().equals(request.getIsbn()) &&
                 bookRepository.existsByIsbn(request.getIsbn())) {
             throw new BusinessException(ErrorCode.ISBN_DUPLICATE, request.getIsbn());
         }
 
         // Book 기본 정보 PATCH
-        if (request.getTitle() != null) book.setTitle(request.getTitle());
-        if (request.getAuthor() != null) book.setAuthor(request.getAuthor());
-        if (request.getIsbn() != null) book.setIsbn(request.getIsbn());
-        if (request.getPrice() != null) book.setPrice(request.getPrice());
-        if (request.getPublishDate() != null) book.setPublishDate(request.getPublishDate());
+        if (request.getTitle() != null) existbook.setTitle(request.getTitle());
+        if (request.getAuthor() != null) existbook.setAuthor(request.getAuthor());
+        if (request.getIsbn() != null) existbook.setIsbn(request.getIsbn());
+        if (request.getPrice() != null) existbook.setPrice(request.getPrice());
+        if (request.getPublishDate() != null) existbook.setPublishDate(request.getPublishDate());
 
         // BookDetail PATCH
         if (request.getDetailRequest() != null) {
-            BookDetail bookDetail = book.getBookDetail();
+            BookDetail bookDetail = existbook.getBookDetail();
             if (bookDetail == null) {
                 bookDetail = new BookDetail();
-                bookDetail.setBook(book);
-                book.setBookDetail(bookDetail);
+                bookDetail.setBook(existbook);
+                existbook.setBookDetail(bookDetail);
             }
             updateBookDetail(bookDetail, request.getDetailRequest());
         }
 
-        Book updatedBook = bookRepository.save(book);
+        Book updatedBook = bookRepository.save(existbook);
         return BookDTO.Response.fromEntity(updatedBook);
     }
 

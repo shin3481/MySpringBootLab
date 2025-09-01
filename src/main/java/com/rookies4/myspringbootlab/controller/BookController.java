@@ -72,6 +72,8 @@ public class BookController {
     public ResponseEntity<BookDTO.Response> patchBook(
             @PathVariable Long id,
             @RequestBody BookDTO.PatchRequest request) {
+
+
         return ResponseEntity.ok(bookService.patchBook(id, request));
     }
     // 도서 상세 정보 일부 수정 (BookDetail 일부 수정)

@@ -2,6 +2,9 @@ package com.rookies4.myspringbootlab.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.CONFLICT)
 @Getter
 public class BusinessException extends RuntimeException {	
     private static final long serialVersionUID = 1L;
@@ -18,7 +21,7 @@ public class BusinessException extends RuntimeException {
         this.httpStatus = httpStatus;
     }
     public BusinessException(ErrorCode errorCode, Object... args) {
-        super(errorCode.formatMessage(args));
+        this.message = errorCode.formatMessage(args);
         this.httpStatus = errorCode.getHttpStatus();
     }
 }
