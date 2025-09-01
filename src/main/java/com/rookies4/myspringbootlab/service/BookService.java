@@ -1,6 +1,7 @@
 package com.rookies4.myspringbootlab.service;
 
 import com.rookies4.myspringbootlab.controller.dto.BookDTO;
+import com.rookies4.myspringbootlab.controller.dto.PublisherDTO;
 import com.rookies4.myspringbootlab.entity.Book;
 import com.rookies4.myspringbootlab.entity.BookDetail;
 import com.rookies4.myspringbootlab.exception.BusinessException;
@@ -86,6 +87,10 @@ public class BookService {
                 .stream()
                 .map(BookDTO.Response::fromEntity)
                 .toList();
+    }
+    //특정 출판사의 모든 도서를 조회
+    public List<PublisherDTO.Response>getBooksByPublisherId(Long publisherId){
+        return publisherRepository.find
     }
     //Book 전체 수정
     @Transactional
