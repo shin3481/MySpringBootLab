@@ -1,11 +1,11 @@
 package com.rookies4.myspringbootlab.service;
 
-import com.rookies4.myspringbootlab.controller.dto.BookDTO;
-import com.rookies4.myspringbootlab.controller.dto.PublisherDTO;
+import com.rookies4.myspringbootlab.controller.dto.*;
 import com.rookies4.myspringbootlab.entity.Book;
 import com.rookies4.myspringbootlab.entity.BookDetail;
 import com.rookies4.myspringbootlab.exception.BusinessException;
 import com.rookies4.myspringbootlab.exception.ErrorCode;
+import com.rookies4.myspringbootlab.repository.*;
 import com.rookies4.myspringbootlab.repository.BookRepository;
 import jakarta.persistence.Column;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
-
+    private final PublisherRepository publisherRepository;
+    private final BookDetailRepository bookDetailRepository;
     //등록
     @Transactional
     public BookDTO.Response createBook(BookDTO.Request request){
@@ -89,8 +90,16 @@ public class BookService {
                 .toList();
     }
     //특정 출판사의 모든 도서를 조회
-    public List<PublisherDTO.Response>getBooksByPublisherId(Long publisherId){
-        return publisherRepository.find
+    public List<BookDTO.Response> getBooksByPublisherId(Long publisherId){
+        // Validate publisher exists
+        if (!publisherRepository.existsById(publisherId)) {
+            throw new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                    "publisher", "id", publisherId);
+        }
+        return bookRepository.findByPublisherId(publisherId)
+                .stream()
+                .map(BookDTO.Response::fromEntity)
+                .toList();
     }
     //Book 전체 수정
     @Transactional
