@@ -23,7 +23,7 @@ public class Publisher {
     private String name;
 
     @Column
-    private LocalDate establisheDate;
+    private LocalDate establishedDate;
 
     @Column
     private String address;

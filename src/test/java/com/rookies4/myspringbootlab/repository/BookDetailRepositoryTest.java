@@ -2,7 +2,6 @@ package com.rookies4.myspringbootlab.repository;
 
 import com.rookies4.myspringbootlab.entity.Book;
 import com.rookies4.myspringbootlab.entity.BookDetail;
-import lombok.Builder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
-public class BookRepositoryTest {
+public class BookDetailRepositoryTest {
 
     @Autowired
     private BookRepository bookRepository;

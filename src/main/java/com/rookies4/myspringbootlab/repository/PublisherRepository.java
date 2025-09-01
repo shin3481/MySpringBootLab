@@ -13,7 +13,7 @@ public interface PublisherRepository  extends JpaRepository<Publisher, Long> {
 
     Optional<Publisher> findByName(String name);
     @Query("SELECT p FROM Publisher p JOIN FETCH p.book WHERE p.id = :id")
-    Optional<Publisher> findByIdWithBook(@Param("id") Long id);
+    Optional<Publisher> findByIdWithBooks(@Param("id") Long id);
     //Name 중복체크를 위한 메서드
     boolean existsByName(String name);
 }

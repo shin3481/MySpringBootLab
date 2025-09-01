@@ -1,24 +1,18 @@
 package com.rookies4.myspringbootlab.controller;
 
 import com.rookies4.myspringbootlab.controller.dto.BookDTO;
-import com.rookies4.myspringbootlab.entity.Book;
-import com.rookies4.myspringbootlab.exception.BusinessException;
-import com.rookies4.myspringbootlab.repository.BookRepository;
 import com.rookies4.myspringbootlab.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
-public class BookController {
+public class BookDetailController {
     private final BookService bookService;
 
     // 도서 등록

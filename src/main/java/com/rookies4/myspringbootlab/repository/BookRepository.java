@@ -31,5 +31,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail " +
             "LEFT JOIN FETCH b.publisher WHERE b.id = :id")
-    Optional<Book> findByWithAllDetails(@Param("id") Long id);
+    Optional<Book> findByIdWithAllDetails(@Param("id") Long id);
 }
