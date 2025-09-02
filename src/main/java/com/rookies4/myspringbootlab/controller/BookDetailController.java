@@ -4,6 +4,7 @@ import com.rookies4.myspringbootlab.controller.dto.BookDTO;
 import com.rookies4.myspringbootlab.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,8 @@ public class BookDetailController {
     // 도서 등록
     @PostMapping
     public ResponseEntity<BookDTO.Response> createBook(@Valid @RequestBody BookDTO.Request request) {
-        return ResponseEntity.ok(bookService.createBook(request));
+        BookDTO.Response response = bookService.createBook(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     // 모든 도서 조회
