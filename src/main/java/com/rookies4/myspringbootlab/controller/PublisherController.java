@@ -5,12 +5,10 @@ import com.rookies4.myspringbootlab.controller.dto.PublisherDTO;
 import com.rookies4.myspringbootlab.entity.Publisher;
 import com.rookies4.myspringbootlab.service.BookService;
 import com.rookies4.myspringbootlab.service.PublisherService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,13 @@ import java.util.List;
 public class PublisherController {
     private final PublisherService publisherService;
     private final BookService bookService;
+
+    @PostMapping
+    public ResponseEntity<PublisherDTO.Response> createPublisher(
+            @RequestBody @Valid PublisherDTO.Request request) {
+        PublisherDTO.Response createdPublisher = publisherService.createPublisher(request);
+        return ResponseEntity.ok(createdPublisher);
+    }
 
     @GetMapping
     public ResponseEntity<List<PublisherDTO.SimpleResponse>> getAllPublishers() {

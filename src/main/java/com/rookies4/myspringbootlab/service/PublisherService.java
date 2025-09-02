@@ -56,6 +56,8 @@ public class PublisherService {
         // Create publisher entity
         Publisher publisher = Publisher.builder()
                 .name(request.getName())
+                .establishedDate(request.getEstablishedDate())
+                .address(request.getAddress())
                 .build();
         // Save and return the publisher
         Publisher savedPublisher = publisherRepository.save(publisher);
