@@ -79,6 +79,8 @@ public class PublisherService {
         }
         // Update publisher info
         publisher.setName(request.getName());
+        publisher.setEstablishedDate(request.getEstablishedDate());
+        publisher.setAddress(request.getAddress());
 
         // Save and return updated publisher
         Publisher updatedPublisher = publisherRepository.save(publisher);

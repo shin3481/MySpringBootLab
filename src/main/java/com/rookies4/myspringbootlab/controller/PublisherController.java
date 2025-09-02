@@ -48,5 +48,13 @@ public class PublisherController {
         List<BookDTO.Response> books = bookService.getBooksByPublisherId(id);
         return ResponseEntity.ok(books);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<PublisherDTO.Response> updatePublisher(
+            @PathVariable Long id,
+            @RequestBody @Valid PublisherDTO.Request request) {
+
+        PublisherDTO.Response updatedPublisher = publisherService.updatePublisher(id, request);
+        return ResponseEntity.ok(updatedPublisher);
+    }
 
 }

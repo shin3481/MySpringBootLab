@@ -2308,3 +2308,128 @@ insert into book_details (book_id,cover_image_url,description,edition,language,p
 2025-09-02T23:35:23.048+09:00  WARN 24624 --- [MySpringBootLab] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
 2025-09-02T23:35:23.049+09:00  INFO 24624 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-09-02T23:35:23.051+09:00  INFO 24624 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-02T23:35:25.832+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Starting MySpringBootLabApplication using Java 17.0.2 with PID 18228 (C:\mybackend\SpringBoot\MySpringBootLab\target\classes started by user in C:\mybackend\SpringBoot\MySpringBootLab)
+2025-09-02T23:35:25.836+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Running with Spring Boot v3.4.8, Spring v6.2.9
+2025-09-02T23:35:25.836+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : The following 1 profile is active: "test"
+2025-09-02T23:35:25.885+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-09-02T23:35:25.885+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-09-02T23:35:26.789+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-02T23:35:26.860+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 3 JPA repository interfaces.
+2025-09-02T23:35:27.518+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-02T23:35:27.531+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-02T23:35:27.531+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-09-02T23:35:27.577+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-02T23:35:27.577+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1691 ms
+2025-09-02T23:35:27.877+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-02T23:35:27.948+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-09-02T23:35:27.985+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-02T23:35:28.281+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-02T23:35:28.308+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-02T23:35:28.418+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-09-02T23:35:28.419+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-02T23:35:28.465+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-02T23:35:29.130+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-02T23:35:29.168+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-02T23:35:29.535+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-02T23:35:30.098+09:00  WARN 18228 --- [MySpringBootLab] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-02T23:35:30.385+09:00  WARN 18228 --- [MySpringBootLab] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-02T23:35:30.595+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-09-02T23:35:30.641+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-09-02T23:35:30.648+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-09-02T23:35:30.725+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-02T23:35:30.737+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Started MySpringBootLabApplication in 5.333 seconds (process running for 5.705)
+2025-09-02T23:35:30.780+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Starting book data initialization...
+2025-09-02T23:35:30.871+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating publishers...
+2025-09-02T23:35:30.899+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 4 publishers
+2025-09-02T23:35:30.899+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating books...
+2025-09-02T23:35:30.909+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 8 books
+2025-09-02T23:35:30.909+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Book data initialization completed successfully
+2025-09-02T23:35:30.926+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.username} = Test Env
+2025-09-02T23:35:30.926+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.port} = 7
+2025-09-02T23:35:30.927+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.username} = Test Env
+2025-09-02T23:35:30.927+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : MyBootProperties getUsername() = Test Env
+2025-09-02T23:35:30.928+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : MyBootProperties getPort() = 44
+2025-09-02T23:35:30.928+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 설정된 Port 번호 = 8080
+2025-09-02T23:35:30.929+09:00  INFO 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 현재 활성화된 MyEnvironment Bean = MyEnvironment(mode=테스트환경)
+2025-09-02T23:35:30.931+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : VM 아규먼트 foo : false
+2025-09-02T23:35:30.931+09:00 DEBUG 18228 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : Program 아규먼트 bar : false
+2025-09-02T23:35:31.389+09:00  INFO 18228 --- [MySpringBootLab] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-02T23:35:31.389+09:00  INFO 18228 --- [MySpringBootLab] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-02T23:35:31.390+09:00  INFO 18228 --- [MySpringBootLab] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-02T23:36:33.562+09:00  WARN 18228 --- [MySpringBootLab] [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
+2025-09-02T23:36:46.839+09:00  WARN 18228 --- [MySpringBootLab] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
+2025-09-02T23:38:26.208+09:00  INFO 18228 --- [MySpringBootLab] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-02T23:38:26.704+09:00  INFO 18228 --- [MySpringBootLab] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-02T23:38:26.722+09:00  INFO 18228 --- [MySpringBootLab] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-02T23:38:26.734+09:00  WARN 18228 --- [MySpringBootLab] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-09-02T23:38:26.735+09:00  INFO 18228 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-02T23:38:26.737+09:00  INFO 18228 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-02T23:38:30.546+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Starting MySpringBootLabApplication using Java 17.0.2 with PID 15308 (C:\mybackend\SpringBoot\MySpringBootLab\target\classes started by user in C:\mybackend\SpringBoot\MySpringBootLab)
+2025-09-02T23:38:30.559+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Running with Spring Boot v3.4.8, Spring v6.2.9
+2025-09-02T23:38:30.562+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : The following 1 profile is active: "test"
+2025-09-02T23:38:30.615+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-09-02T23:38:30.615+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-09-02T23:38:31.547+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-02T23:38:31.617+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 3 JPA repository interfaces.
+2025-09-02T23:38:32.255+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-09-02T23:38:32.270+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-02T23:38:32.270+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-09-02T23:38:32.314+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-02T23:38:32.314+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1699 ms
+2025-09-02T23:38:32.588+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-02T23:38:32.660+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-09-02T23:38:32.710+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-02T23:38:32.970+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-02T23:38:33.002+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-02T23:38:33.149+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-09-02T23:38:33.150+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-02T23:38:33.188+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-02T23:38:33.856+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-02T23:38:33.892+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-02T23:38:34.282+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-02T23:38:34.836+09:00  WARN 15308 --- [MySpringBootLab] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-02T23:38:35.108+09:00  WARN 15308 --- [MySpringBootLab] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-02T23:38:35.299+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-09-02T23:38:35.346+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-09-02T23:38:35.346+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-09-02T23:38:35.437+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-09-02T23:38:35.438+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.MySpringBootLabApplication         : Started MySpringBootLabApplication in 5.327 seconds (process running for 5.691)
+2025-09-02T23:38:35.490+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Starting book data initialization...
+2025-09-02T23:38:35.579+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating publishers...
+2025-09-02T23:38:35.611+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 4 publishers
+2025-09-02T23:38:35.611+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating books...
+2025-09-02T23:38:35.629+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 8 books
+2025-09-02T23:38:35.629+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Book data initialization completed successfully
+2025-09-02T23:38:35.644+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.username} = Test Env
+2025-09-02T23:38:35.644+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.port} = 63
+2025-09-02T23:38:35.644+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : ${myprop.username} = Test Env
+2025-09-02T23:38:35.645+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : MyBootProperties getUsername() = Test Env
+2025-09-02T23:38:35.645+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : MyBootProperties getPort() = 46
+2025-09-02T23:38:35.645+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 설정된 Port 번호 = 8080
+2025-09-02T23:38:35.645+09:00  INFO 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 현재 활성화된 MyEnvironment Bean = MyEnvironment(mode=테스트환경)
+2025-09-02T23:38:35.646+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : VM 아규먼트 foo : false
+2025-09-02T23:38:35.646+09:00 DEBUG 15308 --- [MySpringBootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : Program 아규먼트 bar : false
+2025-09-02T23:38:41.728+09:00  INFO 15308 --- [MySpringBootLab] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-02T23:38:41.733+09:00  INFO 15308 --- [MySpringBootLab] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-02T23:38:41.733+09:00  INFO 15308 --- [MySpringBootLab] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-09-02T23:38:41.894+09:00  WARN 15308 --- [MySpringBootLab] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.rookies4.myspringbootlab.exception.BusinessException: Publisher not found with id: 5]
+2025-09-02T23:40:32.621+09:00  INFO 15308 --- [MySpringBootLab] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-02T23:40:32.860+09:00  INFO 15308 --- [MySpringBootLab] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-02T23:40:32.864+09:00  INFO 15308 --- [MySpringBootLab] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-02T23:40:32.864+09:00  WARN 15308 --- [MySpringBootLab] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-09-02T23:40:32.864+09:00  INFO 15308 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-02T23:40:32.864+09:00  INFO 15308 --- [MySpringBootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
