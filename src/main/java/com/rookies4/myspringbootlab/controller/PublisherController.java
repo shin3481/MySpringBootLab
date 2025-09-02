@@ -56,5 +56,9 @@ public class PublisherController {
         PublisherDTO.Response updatedPublisher = publisherService.updatePublisher(id, request);
         return ResponseEntity.ok(updatedPublisher);
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePublisher(@PathVariable Long id) {
+        publisherService.deletePublisher(id);
+        return ResponseEntity.noContent().build(); // HTTP 204
+    }
 }

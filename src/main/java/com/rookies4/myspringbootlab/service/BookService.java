@@ -3,6 +3,7 @@ package com.rookies4.myspringbootlab.service;
 import com.rookies4.myspringbootlab.controller.dto.*;
 import com.rookies4.myspringbootlab.entity.Book;
 import com.rookies4.myspringbootlab.entity.BookDetail;
+import com.rookies4.myspringbootlab.entity.Publisher;
 import com.rookies4.myspringbootlab.exception.BusinessException;
 import com.rookies4.myspringbootlab.exception.ErrorCode;
 import com.rookies4.myspringbootlab.repository.*;
@@ -30,6 +31,10 @@ public class BookService {
         if(bookRepository.existsByIsbn(request.getIsbn())){
             throw new BusinessException(ErrorCode.ISBN_DUPLICATE,request.getIsbn());
         }
+        //Publisher 조회
+        Publisher publisher = publisherRepository.findById(request.getPublisherId())
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Publisher", "id", request.getPublisherId()));
         // DTO -> Entity 변환
         Book book = Book.builder()
                 .title(request.getTitle())
@@ -37,7 +42,9 @@ public class BookService {
                 .isbn(request.getIsbn())
                 .price(request.getPrice())
                 .publishDate(request.getPublishDate())
+                .publisher(publisher)
                 .build();
+
         if(request.getDetailRequest() != null){
             BookDetail bookDetailEntity = BookDetail.builder()
                     .description(request.getDetailRequest().getDescription())
