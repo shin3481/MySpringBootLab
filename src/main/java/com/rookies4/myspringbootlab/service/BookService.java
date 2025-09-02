@@ -111,6 +111,7 @@ public class BookService {
     //Book 전체 수정
     @Transactional
     public  BookDTO.Response updateBook(Long id, BookDTO.Request request){
+        // 1. 기존 Book 조회
         Book existbook = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,"Book","Id",id));
 
@@ -119,11 +120,34 @@ public class BookService {
                 bookRepository.existsByIsbn(request.getIsbn())) {
             throw new BusinessException(ErrorCode.ISBN_DUPLICATE, request.getIsbn());
         }
-        // 업데이트할 필드들 반영
+        // 3. Publisher 업데이트
+        Publisher publisher = publisherRepository.findById(request.getPublisherId())
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Publisher", "id", request.getPublisherId()));
+        existbook.setPublisher(publisher);
+
+        // 4. Book 기본 정보 업데이트
         existbook.setTitle(request.getTitle());
         existbook.setAuthor(request.getAuthor());
+        existbook.setIsbn(request.getIsbn());
         existbook.setPrice(request.getPrice());
         existbook.setPublishDate(request.getPublishDate());
+
+        // 5. BookDetail 업데이트
+        if(request.getDetailRequest() != null){
+            BookDetail detail = existbook.getBookDetail();
+            if(detail == null){
+                detail = new BookDetail();
+                detail.setBook(existbook);
+                existbook.setBookDetail(detail);
+            }
+            detail.setDescription(request.getDetailRequest().getDescription());
+            detail.setLanguage(request.getDetailRequest().getLanguage());
+            detail.setPageCount(request.getDetailRequest().getPageCount());
+            detail.setPublisher(request.getDetailRequest().getPublisher());
+            detail.setCoverImageUrl(request.getDetailRequest().getCoverImageUrl());
+            detail.setEdition(request.getDetailRequest().getEdition());
+        }
 
         return BookDTO.Response.fromEntity(existbook);
     }
