@@ -80,8 +80,10 @@ public class BookDTO {
         public static Response fromEntity(Book book) {
 
             PublisherDTO.SimpleResponse publisherResponse = book.getPublisher() != null
-                    ? PublisherDTO.SimpleResponse.fromEntity(book.getPublisher())
-                    : null;
+                    ? PublisherDTO.SimpleResponse.fromEntityWithCount(book.getPublisher(),
+                    (long) book.getPublisher().getBooks().size()
+            )
+            : null;
 
             BookDetailResponse detailResponse = book.getBookDetail() != null
                     ? BookDetailResponse.builder()
