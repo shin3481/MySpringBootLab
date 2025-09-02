@@ -1,6 +1,7 @@
 package com.rookies4.myspringbootlab.controller;
 
 import com.rookies4.myspringbootlab.controller.dto.BookDTO;
+import com.rookies4.myspringbootlab.controller.dto.PublisherDTO;
 import com.rookies4.myspringbootlab.entity.Publisher;
 import com.rookies4.myspringbootlab.service.BookService;
 import com.rookies4.myspringbootlab.service.PublisherService;

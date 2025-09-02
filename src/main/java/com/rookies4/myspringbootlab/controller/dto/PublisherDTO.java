@@ -1,4 +1,5 @@
-import com.rookies4.myspringbootlab.controller.dto.BookDTO;
+package com.rookies4.myspringbootlab.controller.dto;
+
 import com.rookies4.myspringbootlab.entity.Publisher;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -73,6 +74,7 @@ public class PublisherDTO {
                     .name(publisher.getName())
                     .establishedDate(publisher.getEstablishedDate())
                     .address(publisher.getAddress())
+
                     .build();
         }
 

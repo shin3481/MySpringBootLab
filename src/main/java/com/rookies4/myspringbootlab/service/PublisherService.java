@@ -1,5 +1,6 @@
 package com.rookies4.myspringbootlab.service;
 
+import com.rookies4.myspringbootlab.controller.dto.PublisherDTO;
 import com.rookies4.myspringbootlab.entity.Publisher;
 import com.rookies4.myspringbootlab.exception.BusinessException;
 import com.rookies4.myspringbootlab.exception.ErrorCode;
@@ -22,7 +23,12 @@ public class PublisherService {
     public List<PublisherDTO.SimpleResponse> getAllPublishers(){
         return publisherRepository.findAll()
                 .stream()
-                .map(PublisherDTO.SimpleResponse::fromEntity)
+                .map(publisher ->
+                        PublisherDTO.SimpleResponse.fromEntityWithCount(
+                                publisher,
+                                (long) publisher.getBooks().size()
+                        )
+                )
                 .toList();
     }
     //ID로 특정 출판사를 조회하며, 해당 출판사의 모든 도서 정보를 포함

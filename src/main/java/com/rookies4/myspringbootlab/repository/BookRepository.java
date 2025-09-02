@@ -26,8 +26,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     //Publisher 관련 새로 추가된 메서드
     List<Book> findByPublisherId(Long publisherId);
 
-    @Query("SELECT COUNT(s) FROM Book b WHERE b.publisher.id = :publisherId")
-    Long countByPublisherId(@Param("id") Long publisherId);
+    @Query("SELECT COUNT(b) FROM Book b WHERE b.publisher.id = :publisherId")
+    Long countByPublisherId(@Param("publisherId") Long publisherId);
 
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail " +
             "LEFT JOIN FETCH b.publisher WHERE b.id = :id")

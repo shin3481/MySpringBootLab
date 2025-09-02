@@ -27,7 +27,7 @@ public class BookDetail {
     @Column(nullable = false)
     private String publisher;
 
-    @Column(nullable = false)
+    @Column
     private String coverImageUrl;
 
     @Column(nullable = false)
